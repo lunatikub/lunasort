@@ -1,1 +1,3 @@
 # lunasort
+
+[![Build Status](https://travis-ci.org/lunatikub/lunasort.svg?branch=master)](https://travis-ci.org/lunatikub/lunasort)
