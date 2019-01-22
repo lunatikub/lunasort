@@ -106,3 +106,14 @@ lunasort_inc = include_directories('include', '.')
 subdir('src')
 subdir('tests')
 
+##############
+## Lunasort ##
+##############
+
+lunasort = executable(
+  'lunasort',
+  join_paths('src', 'lunasort.c'),
+  lunasort_src,
+  include_directories: lunasort_inc,
+  c_args: common_args,
+)
