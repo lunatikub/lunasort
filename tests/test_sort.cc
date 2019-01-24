@@ -14,22 +14,19 @@ static int cmp(const void *a, const void *b)
 
 bool Sort::Test(uint32_t *data, size_t sz, void (*sort_f)(uint32_t*, size_t))
 {
-  uint32_t *test = array_duplicate(data, sz);
-  uint32_t *ref = array_duplicate(data, sz);
+  for (int i = 0; i < 6; ++i) {
+    uint32_t *test = array_duplicate(data, sz);
+    uint32_t *ref = array_duplicate(data, sz);
 
-  qsort(ref, sz, sizeof(uint32_t), cmp);
-  sort_f(test, sz);
+    qsort(ref, sz, sizeof(uint32_t), cmp);
+    sort_f(test, sz);
 
-  bool ret = true;
-
-  for (size_t i = 0; i < sz; ++i) {
-    if (test[i] != ref[i]) {
-      ret = false;
-      break;
+    int ret = memcmp(test, ref, sizeof(uint32_t) * sz);
+    free(test);
+    free(ref);
+    if (ret != 0) {
+      return false;
     }
   }
-
-  free(test);
-  free(ref);
-  return ret;
+  return true;
 }

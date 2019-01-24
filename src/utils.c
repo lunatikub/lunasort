@@ -1,8 +1,11 @@
+#include <time.h>
 #include <string.h>
+
 #include <lunasort/utils.h>
 
 uint32_t* array_random_create(size_t sz)
 {
+  srand(time(NULL));
   uint32_t *t = malloc(sz * sizeof(uint32_t));
   for (size_t i = 0; i < sz; ++i) {
     t[i] = rand() % sz;

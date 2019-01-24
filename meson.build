@@ -52,6 +52,7 @@ rt_dep = c_compiler.find_library('rt')
 conf_data = configuration_data()
 
 conf_data.set('LUNASORT_VERSION', '"1.0"')
+conf_data.set('LUNASORT_PROFILING', get_option('profiling'))
 
 configure_file(
   input: join_paths(root_dir, 'include', 'lunasort', 'config.h.in'),

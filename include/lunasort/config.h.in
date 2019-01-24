@@ -1,2 +1,1 @@
-#mesondefine LUNASORT_MEMORY
-#mesondefine LUNASORT_PERF
+#mesondefine LUNASORT_PROFILING
