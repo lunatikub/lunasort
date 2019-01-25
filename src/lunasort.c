@@ -12,6 +12,10 @@ struct lunasort {
   void (*sort_f)(uint32_t *ptr, size_t sz);
 } sorts[] = {
   { "bubble", bubble_sort },
+  { "bubble_o", bubble_sort_o },
+  { "insertion", insertion_sort },
+  { "insertion_o", insertion_sort_o },
+  { "insertion_r", insertion_sort_r },
   { NULL, NULL },
 };
 

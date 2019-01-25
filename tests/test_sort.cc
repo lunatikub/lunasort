@@ -12,9 +12,10 @@ static int cmp(const void *a, const void *b)
   return va > vb ? 1 : (va < vb ? -1 : 0);
 }
 
-bool Sort::Test(uint32_t *data, size_t sz, void (*sort_f)(uint32_t*, size_t))
+bool Sort::Test(uint32_t *data, size_t sz, uint32_t nr,
+                void (*sort_f)(uint32_t*, size_t))
 {
-  for (int i = 0; i < 6; ++i) {
+  for (uint32_t i = 0; i < nr; ++i) {
     uint32_t *test = array_duplicate(data, sz);
     uint32_t *ref = array_duplicate(data, sz);
 

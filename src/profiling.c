@@ -1,11 +1,18 @@
+#include <string.h>
 #include <stdio.h>
 #include <stdint.h>
 
 #include "profiling.h"
 
-static uint64_t cmp;
-static uint64_t swap;
-static uint64_t start;
+struct profiling {
+  uint64_t cmp;
+  uint64_t swap;
+  uint64_t set;
+  uint64_t get;
+  uint64_t start;
+};
+
+static struct profiling profil;
 
 /* Read time stamp counter. */
 #ifdef __amd64
@@ -21,17 +28,20 @@ static __inline__ unsigned long long rdtsc(void)
 
 void profiling_start(void)
 {
-  cmp = 0;
-  swap = 0;
-  start = rdtsc();
+  memset(&profil, 0, sizeof(struct profiling));
+  profil.start = rdtsc();
+  printf("kpi,name,cmp,swap,set,get\n");
+  printf("cycle,name,cycles\n");
 }
 
 void profiling_stop(const char *sort_name, bool kpi, bool cycle)
 {
-  uint64_t lap = rdtsc() - start;
+  uint64_t lap = rdtsc() - profil.start;
 
   if (kpi) {
-    printf("kpi,%s,%lu,%lu\n", sort_name, cmp, swap);
+    printf("kpi,%s,%lu,%lu,%lu,%lu\n",
+           sort_name, profil.cmp, profil.swap,
+           profil.set, profil.get);
   }
   if (cycle) {
     printf("cycle,%s,%lu\n", sort_name, lap);
@@ -40,20 +50,20 @@ void profiling_stop(const char *sort_name, bool kpi, bool cycle)
 
 void profiling_cmp_inc(void)
 {
-  ++cmp;
+  __atomic_add_fetch(&profil.cmp, 1, __ATOMIC_SEQ_CST);
 }
 
 void profiling_swap_inc(void)
 {
-  ++swap;
+  __atomic_add_fetch(&profil.swap, 1, __ATOMIC_SEQ_CST);
 }
 
-uint64_t profiling_cmp_get(void)
+void profiling_set_inc(void)
 {
-  return cmp;
+  __atomic_add_fetch(&profil.set, 1, __ATOMIC_SEQ_CST);
 }
 
-uint64_t profiling_swap_get(void)
+void profiling_get_inc(void)
 {
-  return swap;
+  __atomic_add_fetch(&profil.get, 1, __ATOMIC_SEQ_CST);
 }

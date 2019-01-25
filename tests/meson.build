@@ -1,7 +1,9 @@
 test_src = files(
   'test_sort.cc',
-  'test_bubble.cc',
   'test_main.cc',
+  # sort algorithms
+  'test_bubble.cc',
+  'test_insertion.cc',
 )
 
 unit_test = executable(
