@@ -113,8 +113,28 @@ subdir('tests')
 
 lunasort = executable(
   'lunasort',
-  join_paths('src', 'lunasort.c'),
+  common_src,
   lunasort_src,
+  sort_src,
   include_directories: lunasort_inc,
   c_args: common_args,
+  dependencies: [
+    ncurses_dep,
+  ]
+)
+
+##################
+## Lunanimation ##
+##################
+
+lunanimation = executable(
+  'lunanimation',
+  common_src,
+  lunanimation_src,
+  sort_src,
+  include_directories: lunasort_inc,
+  c_args: common_args,
+  dependencies: [
+    ncurses_dep,
+  ]
 )

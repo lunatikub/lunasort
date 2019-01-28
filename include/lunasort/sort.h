@@ -5,6 +5,7 @@
  * Nomenclature suffix:
  * + '_o': optimized
  * + '_r'" recursive
+ * + '_a'" animation
  */
 
 /**
@@ -13,6 +14,7 @@
  */
 void bubble_sort(uint32_t *ptr, size_t sz);
 void bubble_sort_o(uint32_t *ptr, size_t sz);
+void bubble_sort_a(uint32_t *ptr, size_t sz);
 
 /**
  * Insertion sort.
