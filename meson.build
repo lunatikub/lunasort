@@ -107,6 +107,21 @@ lunasort_inc = include_directories('include', '.')
 subdir('src')
 subdir('tests')
 
+# List of modules.
+# Order can matter according to dependencies.
+modules = [
+  'algo',
+]
+
+# Add sources and unit tests (if exist) for each module.
+foreach module : modules
+  subdir(join_paths('src', module))
+  unit_test_dir = join_paths('tests', module)
+  if run_command('[', '-d', unit_test_dir, ']').returncode() == 0
+    subdir(unit_test_dir)
+  endif
+endforeach
+
 ##############
 ## Lunasort ##
 ##############

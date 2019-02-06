@@ -1,0 +1,17 @@
+BubbleSort
+{
+    Declaration {
+        var i int,
+        var j int,
+    }
+
+    Implementation {
+        for i <- S - 1 to 1 by -1 {
+            for j <- 0 to i - 1 by 1 {
+                if T[j + 1] < T[j] {
+                    swap T[j], T[j + 1]
+                }
+            }
+        }
+    }
+}
