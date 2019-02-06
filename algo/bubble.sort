@@ -1,8 +1,8 @@
 BubbleSort
 {
     Declaration {
-        var i int,
-        var j int,
+        i int,
+        j int,
     }
 
     Implementation {

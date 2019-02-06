@@ -1,7 +1,9 @@
 #ifndef TOKENTYPE2STR_H__
 #define TOKENTYPE2STR_H__
 
-static inline std::string tokentype2str(enum token_type type)
+#include <stdlib.h>
+
+static inline const char* tokentype2str(enum token_type type)
 {
   switch (type) {
     case TOKEN_NULL: return "null";

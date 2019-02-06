@@ -29,6 +29,13 @@ struct token {
   char err[ERR_SZ];
 };
 
+#define DECLARE_TOKEN(NAME) \
+  struct token NAME = { \
+    .start = 0, \
+    .line = 1, \
+    .type = TOKEN_NULL, \
+  }
+
 bool lexer_token_fill(const char *sort, size_t len, struct token *tok);
 
 void lexer_token_eat(struct token *tok);

@@ -65,25 +65,6 @@ static void lexer_token_set(struct token *tok, enum token_type type)
     ++tok->end;
 }
 
-// static bool lexer_assignment(const char *sort, size_t len, struct token *tok)
-// {
-//   ++tok->end;
-//   if (tok->end >= len) {
-//     LEXER_ERR_EXPECTED("-", "EOF");
-//     return false;
-//   }
-//   if (sort[tok->end] != '-') {
-//     LEXER_ERR_EXPECTED("-", &sort[tok->end]);
-//     return false;
-//   }
-
-//   assert(tok->end < len);
-//   assert(sort[tok->end] == '-');
-//   ++tok->end;
-//   tok->type = TOKEN_ASSIGNMENT;
-//   return true;
-// }
-
 static enum token_type keyword_get(const char *str, size_t len)
 {
 #define KEYWORD(STR, TOKEN)                     \

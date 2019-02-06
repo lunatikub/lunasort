@@ -111,6 +111,7 @@ subdir('tests')
 # Order can matter according to dependencies.
 modules = [
   'algo',
+  'utils',
 ]
 
 # Add sources and unit tests (if exist) for each module.
@@ -122,34 +123,42 @@ foreach module : modules
   endif
 endforeach
 
-##############
-## Lunasort ##
-##############
+###########
+## Tools ##
+###########
 
-lunasort = executable(
-  'lunasort',
-  common_src,
-  lunasort_src,
-  sort_src,
-  include_directories: lunasort_inc,
-  c_args: common_args,
-  dependencies: [
-    ncurses_dep,
-  ]
-)
+subdir(join_paths('tools', 'lexer_dump'))
 
-##################
-## Lunanimation ##
-##################
+# ##############
+# ## Lunasort ##
+# ##############
 
-lunanimation = executable(
-  'lunanimation',
-  common_src,
-  lunanimation_src,
-  sort_src,
-  include_directories: lunasort_inc,
-  c_args: common_args,
-  dependencies: [
-    ncurses_dep,
-  ]
-)
+# lunasort = executable(
+#   'lunasort',
+#   common_src,
+#   lunasort_src,
+#   displayer_src,
+#   sort_src,
+#   include_directories: lunasort_inc,
+#   c_args: common_args,
+#   dependencies: [
+#     ncurses_dep,
+#   ]
+# )
+
+# ##################
+# ## Lunanimation ##
+# ##################
+
+# lunanimation = executable(
+#   'lunanimation',
+#   common_src,
+#   lunanimation_src,
+#   displayer_src,
+#   sort_src,
+#   include_directories: lunasort_inc,
+#   c_args: common_args,
+#   dependencies: [
+#     ncurses_dep,
+#   ]
+# )

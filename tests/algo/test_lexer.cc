@@ -11,7 +11,6 @@ protected:
   void Test(const struct token_list *toks, size_t sz);
 };
 
-
 void Lexer::Test(const struct token_list *toks, size_t sz)
 {
   const struct token_list *iter;
