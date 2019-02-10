@@ -127,7 +127,14 @@ endforeach
 ## Tools ##
 ###########
 
-subdir(join_paths('tools', 'lexer_dump'))
+tools = [
+  'lexer_dump',
+  'ast_dump',
+]
+
+foreach tool : tools
+  subdir(join_paths('tools', tool))
+endforeach
 
 # ##############
 # ## Lunasort ##

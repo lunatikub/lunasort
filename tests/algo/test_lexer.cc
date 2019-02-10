@@ -15,10 +15,9 @@ void Lexer::Test(const struct token_list *toks, size_t sz)
 {
   const struct token_list *iter;
   for (iter = &toks[0]; iter != &toks[sz]; ++iter) {
-    EXPECT_TRUE(lexer_token_fill(sort.c_str(), sort.length(), &tok));
+    lexer_token_fill(sort.c_str(), sort.length(), &tok);
     ASSERT_TRUE(TokEq(iter->str, iter->type)) <<
-      "Lexer test error: '" << iter->str <<
-      "', tok.err: " << tok.err << std::endl;
+      "Lexer test error: '" << iter->str << std::endl;
     lexer_token_eat(&tok);
   }
   lexer_token_fill(sort.c_str(), sort.length(), &tok);
@@ -58,4 +57,3 @@ TEST_F(Lexer, Declaration)
 
   Test(foo_toks, TOKS_SZ(foo_toks));
 }
-

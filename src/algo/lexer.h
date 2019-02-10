@@ -19,25 +19,28 @@ enum token_type {
   TOKEN_END,
 };
 
-#define ERR_SZ (256)
-
 struct token {
   enum token_type type;
   size_t start;
   size_t end;
   size_t line;
-  char err[ERR_SZ];
 };
 
-#define DECLARE_TOKEN(NAME) \
-  struct token NAME = { \
-    .start = 0, \
-    .line = 1, \
-    .type = TOKEN_NULL, \
+#define DECLARE_TOKEN(NAME)                     \
+  struct token NAME = {                         \
+    .start = 0,                                 \
+    .line = 1,                                  \
+    .type = TOKEN_NULL,                         \
   }
 
-bool lexer_token_fill(const char *sort, size_t len, struct token *tok);
+/**
+ * Fill the next token.
+ */
+void lexer_token_fill(const char *sort, size_t len, struct token *tok);
 
+/**
+ * Eat the token filled by 'lexer_token_fill'.
+ */
 void lexer_token_eat(struct token *tok);
 
 #endif /* !LEXER_H_HH */

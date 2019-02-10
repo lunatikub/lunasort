@@ -3,9 +3,8 @@ sort =
         ;
         
 declaration =
-        'Declaration' '{' vardec ',' vardec? '}'
+        'Declaration' '{' vardec ( ',' vardec )? '}'
         ;
-
 
 vardec =
         id type

@@ -7,7 +7,10 @@ unit_test_algo = executable(
   'unit-test-algo',
   test_algo_src,
   algo_src,
-  include_directories: [ algo_test_inc ],
+  include_directories: [
+    algo_test_inc,
+    lunasort_inc
+  ],
   c_args: common_args,
   cpp_args: common_args + [ '-std=gnu++11' ],
   dependencies: [ gtest_dep ],

@@ -2,7 +2,7 @@ BubbleSort
 {
     Declaration {
         i int,
-        j int,
+        j int
     }
 
     Implementation {
