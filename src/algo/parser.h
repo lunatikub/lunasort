@@ -7,7 +7,8 @@
 
 /**
  * Parse a sort algorithm which has to respect
- * the grammar 'sort.ebnf', and build the abstract syntax tree related.
+ * the grammar 'sort.ebnf'.
+ * Build the related abstract syntax tree.
  */
 void algo_parse(struct ast *ast, const char *sort, size_t len);
 

@@ -1,5 +1,5 @@
-#ifndef LEXER_H_HH
-#define LEXER_H_HH
+#ifndef LEXER_H__
+#define LEXER_H__
 
 #include <stddef.h>
 #include <stdbool.h>
@@ -21,8 +21,8 @@ enum token_type {
 
 struct token {
   enum token_type type;
-  size_t start;
-  size_t end;
+  size_t start; /* offset of the token start. */
+  size_t end; /* offset of the token end. */
   size_t line;
 };
 
@@ -34,7 +34,7 @@ struct token {
   }
 
 /**
- * Fill the next token.
+ * Fill the next token or assert in case of error.
  */
 void lexer_token_fill(const char *sort, size_t len, struct token *tok);
 
@@ -43,4 +43,4 @@ void lexer_token_fill(const char *sort, size_t len, struct token *tok);
  */
 void lexer_token_eat(struct token *tok);
 
-#endif /* !LEXER_H_HH */
+#endif /* !LEXER_H__ */

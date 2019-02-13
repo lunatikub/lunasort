@@ -24,18 +24,6 @@ static inline bool is_d(char d)
   return false;
 }
 
-static inline bool
-keyword_cmp(const char *sort, struct token *tok, const char *keyword)
-{
-  size_t len = tok->end - tok->start;
-
-  if (len == strlen(keyword) &&
-      strncmp(&sort[tok->start], keyword, len) == 0) {
-    return true;
-  }
-  return false;
-}
-
 static void lexer_skip(const char *sort, size_t len, struct token *tok)
 {
   while (tok->start < len &&

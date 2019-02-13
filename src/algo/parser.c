@@ -4,8 +4,6 @@
 #include <stdlib.h>
 #include <assert.h>
 
-#include <string.h>
-
 #include "parser.h"
 #include "lexer.h"
 #include "tokentype2str.h"
