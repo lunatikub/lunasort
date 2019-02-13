@@ -1,0 +1,57 @@
+sort =
+        id '{' declaration implementation '}'
+        ;
+        
+declaration =
+        'Declaration' '{' vardec ',' vardec? '}'
+        ;
+
+
+vardec =
+        id type
+        ;
+
+implementation =
+        'Implementation' '{' instr* '}'
+        ;
+
+instr =
+        for
+        assignement
+        ;
+
+assignement =
+        var '<-' expr
+        ;
+
+for =
+        'for' id '<-' expr 'to' expr 'by' number '{' implementation '}'
+        ;
+
+expr =
+        var (op expr)+
+        ;
+
+var =
+        id ( '[' expr ']' )?
+        ;
+
+type =
+        int
+        []type
+        ;
+
+op =
+        '+'
+        '-'
+        ;
+
+id = 
+        [a-zA-Z]*
+        ;
+
+number =
+        '-'? [0-9]+
+        ;
+
+

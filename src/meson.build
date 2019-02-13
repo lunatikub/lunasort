@@ -2,6 +2,9 @@ common_src = files(
   'utils.c',
   'profiling.c',
   'options.c',
+)
+
+displayer_src = files(
   'displayer.c',
 )
 
